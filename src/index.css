@@ -1,0 +1,85 @@
+/* general /  reset styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+    outline: none;
+    border: none;
+
+    font-family: Nunito, system-ui, -apple-system, BlinkMacSystemFont, Oxygen, 
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* styling the app container */
+.app {
+    width: 80%;
+    max-width: 28.125rem;
+    min-width: 16.875rem;
+    margin: 30px auto;
+}
+
+.app-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.todo-search-input {
+    background-color: lightgray;
+    width: 100%;
+    padding: 0.625rem 1.125rem;
+    font-size: 1rem;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    margin-bottom: 0.625rem;
+}
+.todo-search-input::placeholder {
+    text-transform: capitalize;
+}
+
+.todo-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1.125rem;
+    background-color: lightcoral;
+    border-radius: 0.625rem;
+    color: white;
+}
+.action-buttons-ctn {
+    display: flex;
+    gap: 0.9375rem;
+}
+.task-delete-button, .task-mark-done-button {
+    display: grid;
+    place-items: center;
+    background-color: unset;
+    cursor: pointer;
+}
+.icon {
+    font-size: large;
+    color: white;
+}
+.icon:hover {
+    color: wheat;
+}
+
+
+/* styling the add-task-button */
+.todo-add-task-button {
+    margin-top: 1.25rem;
+    padding: 0.625rem 1.125rem;
+    border-radius: 0.625rem;
+    background-color: cornflowerblue;
+    color: white;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

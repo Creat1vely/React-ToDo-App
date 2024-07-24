@@ -1,3 +1,5 @@
+import { FaRegTrashCan, FaCheck, FaCirclePlus  } from 'react-icons/fa6'
+
 function App() {
   return (
     <div className='app'>
@@ -24,12 +26,12 @@ function App() {
 
             {/* delete task button */}
             <button className="task-delete-button">
-              delete
+              <FaRegTrashCan className='icon'/>
             </button>
 
             {/* mark task as done button */}
             <button className="task-mark-done-button">
-              mark as done
+              <FaCheck className='icon'/>
             </button>
           </div>
         </div>
@@ -46,12 +48,12 @@ function App() {
 
             {/* delete task button */}
             <button className="task-delete-button">
-              delete
+              <FaRegTrashCan className='icon'/>
             </button>
 
             {/* mark task as done button */}
             <button className="task-mark-done-button">
-              mark as done
+              <FaCheck className='icon'/>
             </button>
           </div>
         </div>
@@ -68,16 +70,25 @@ function App() {
 
             {/* delete task button */}
             <button className="task-delete-button">
-              delete
+              <FaRegTrashCan className='icon'/>
             </button>
 
             {/* mark task as done button */}
             <button className="task-mark-done-button">
-              mark as done
+              <FaCheck className='icon'/>
             </button>
           </div>
         </div>
       </div>
+
+      {/* todo add-task button */}
+      <button className="todo-add-task-button">
+        <FaCirclePlus />
+        
+        <span className="add-task-text">
+          Add new task  
+        </span>
+      </button>
     </div>
   )
 }
