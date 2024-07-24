@@ -1,12 +1,21 @@
 import { useState } from 'react'
 
 // import react icons for icons usage
-import { FaRegTrashCan, FaCheck, FaCirclePlus  } from 'react-icons/fa6'
+import { FaCirclePlus  } from 'react-icons/fa6';
+
+// import child components to be used in the app
+import Task from './Task';
+
+// import useLocalStorage custom hook to handle normal state management
+// in combination with localStorage effect
+import useLocalStorage from '../../Shopping List/src/useLocalStorage';
+
+
 
 function App() {
   // define "tasks" stateful variable for storing the list of 
   // created/saved tasks
-  const [ tasks, setTasks ] = useState([
+  const [ tasks, setTasks ] = useLocalStorage("React-ToDo-List", [
     {
       id: 3472348895454,
       objective: "sweep house",
@@ -105,26 +114,8 @@ function App() {
       { ( tasks.length != 0 && searchValue == "" ) && <div className="todo-task-list">
         {
           tasks.map( function( task ) {
-            return <div className={`task ${ ( task.done ) ? "done" : "" }`} key={ task.id }>
-                    {/* task objective */}
-                    <span className="task-objective">
-                      { task.objective }
-                    </span>
-          
-                    {/* task action buttons */}
-                    <div className="action-buttons-ctn">
-          
-                      {/* delete task button */}
-                      <button className="task-delete-button" onClick={ () => { deleteTask( task.id ) } }>
-                        <FaRegTrashCan className='icon'/>
-                      </button>
-          
-                      {/* mark task as done button */}
-                      <button className="task-mark-done-button" onClick={ () => { toggleTaskAsDone( task.id ) } }>
-                        <FaCheck className='icon'/>
-                      </button>
-                    </div>
-                  </div>
+            return <Task task={ task } deleteTask={ deleteTask } 
+              toggleTaskAsDone={ toggleTaskAsDone} key={ task.id } />
           })
         }
       </div> }
@@ -139,26 +130,8 @@ function App() {
             return task.objective.includes( searchValue )
           })
           .map( function( task ) {
-            return <div className={`task ${ ( task.done ) ? "done" : "" }`} key={ task.id }>
-                    {/* task objective */}
-                    <span className="task-objective">
-                      { task.objective }
-                    </span>
-          
-                    {/* task action buttons */}
-                    <div className="action-buttons-ctn">
-          
-                      {/* delete task button */}
-                      <button className="task-delete-button" onClick={ () => { deleteTask( task.id ) } }>
-                        <FaRegTrashCan className='icon'/>
-                      </button>
-          
-                      {/* mark task as done button */}
-                      <button className="task-mark-done-button" onClick={ () => { toggleTaskAsDone( task.id ) } }>
-                        <FaCheck className='icon'/>
-                      </button>
-                    </div>
-                  </div>
+            return <Task task={ task } deleteTask={ deleteTask } 
+              toggleTaskAsDone={ toggleTaskAsDone} key={ task.id } />
           })
         }
       </div> }
