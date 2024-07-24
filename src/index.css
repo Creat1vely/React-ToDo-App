@@ -19,11 +19,8 @@
     margin: 30px auto;
 }
 
-.app-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
+/* styling the todo search input */
 .todo-search-input {
     background-color: lightgray;
     width: 100%;
@@ -37,6 +34,7 @@
     text-transform: capitalize;
 }
 
+/* styling the todo tasks list and it's listed tasks */
 .todo-task-list {
     display: flex;
     flex-direction: column;
@@ -54,6 +52,7 @@
 .task.done {
     opacity: 0.3;
 }
+/* styling the task action buttons and icons */
 .action-buttons-ctn {
     display: flex;
     gap: 0.9375rem;

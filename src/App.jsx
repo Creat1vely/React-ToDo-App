@@ -43,6 +43,8 @@ function App() {
   const [ searchValue, setSearchValue ] = useState("")
 
 
+  // addTasks()
+  // used to add new tasks to the tasks data
   function addTasks() {
     // prompt user for new task objective
     var newTaskObjective = prompt("Enter an objective for the new task: ");
@@ -69,6 +71,9 @@ function App() {
     }
   }
 
+  // deleteTasks()
+  // used to delete a specific task from the tasks 
+  // data using it's id
   function deleteTask( taskId ) {
     // to delete a task with a specific id
     // filter out the array of tasks without including the
@@ -81,6 +86,9 @@ function App() {
     setTasks( filteredTasks )
   }
 
+  // toggleTaskAsDone()
+  // used to toggle a specific task in the tasks 
+  // data as done/undone using it's id
   function toggleTaskAsDone( taskId ) {
     // create a copy of tasks data
     var copyTasks = [...tasks];
@@ -100,17 +108,16 @@ function App() {
 
 
   return (
-    <div className='app'>
-      {/* app title */}
-      <h1 className="app-title">
-        My ToDo&apos;s
-      </h1>
+    <div className='app'> 
 
       {/* todo search input */}
       <input type="text" className="todo-search-input" placeholder="search tasks" value={ searchValue }
         onChange={ ( e ) => { setSearchValue( e.target.value ) } }/>
 
       {/* todo task list */}
+
+      {/* conditionally render tasks list if there are some created/saved */}
+      {/* tasks and the user has not inputted a searchValue */}
       { ( tasks.length != 0 && searchValue == "" ) && <div className="todo-task-list">
         {
           tasks.map( function( task ) {
@@ -120,15 +127,24 @@ function App() {
         }
       </div> }
 
+      {/* conditionally render a display text if there are no created */}
+      {/* / saved tasks */}
       { ( tasks.length == 0 ) && <h2 className='display-text'>
         you haven&apos;t created any tasks yet
       </h2> }
 
+      {/* conditionally render tasks list if there are some created/saved */}
+      {/* tasks and the user has inputted a searchValue */}
       { ( tasks.length != 0 && searchValue != "" ) && <div className="todo-task-list">
+
         {
+          // firstly filter out tasks which have objectives that include the
+          // searchValue and return it as an array
           tasks.filter( function( task ) {
             return task.objective.includes( searchValue )
           })
+
+          // render out task components based on returned array
           .map( function( task ) {
             return <Task task={ task } deleteTask={ deleteTask } 
               toggleTaskAsDone={ toggleTaskAsDone} key={ task.id } />
