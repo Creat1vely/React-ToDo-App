@@ -10,6 +10,10 @@ import Task from './Task';
 // in combination with localStorage effect
 import useLocalStorage from '../../Shopping List/src/useLocalStorage';
 
+// import branding components
+import CreativelyLinks from './creatively-branding/CreativelyWebDevLinks';
+import CreativelyTitle from './creatively-branding/CreativelyTitle';
+
 
 
 function App() {
@@ -110,6 +114,9 @@ function App() {
   return (
     <div className='app'> 
 
+      {/* app title */}
+      <CreativelyTitle title='React ToDo App'/>
+
       {/* todo search input */}
       <input type="text" className="todo-search-input" placeholder="search tasks" value={ searchValue }
         onChange={ ( e ) => { setSearchValue( e.target.value ) } }/>
@@ -160,6 +167,9 @@ function App() {
           Add new task  
         </span>
       </button>
+
+      {/* attribution links */}
+      <CreativelyLinks/>
     </div>
   )
 }
